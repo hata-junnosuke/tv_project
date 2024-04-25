@@ -2,3 +2,4 @@
 日々改善していく！
 ## 設定していること
 - eslint設定
+- GitHub ActionsでのCI
