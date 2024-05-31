@@ -1,6 +1,29 @@
 version: '3'  # Docker Composeのバージョン指定です。バージョン3は広範囲にサポートされています。
 
 services:
+  db:
+    image: mysql:8.0.32
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: myapp_development
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+  rails:
+    build:
+      context: ./rails
+    command:  bash -c "tail -f log/development.log"
+    volumes:
+      - ./rails:/myapp
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+    tty: true
+    stdin_open: true
   next:
     build:
       dockerfile: ./next/Dockerfile  # DockerイメージをビルドするためのDockerfileの場所を指定します。
@@ -13,4 +36,5 @@ services:
       - "8000:3000"  # ホストのポート8000をコンテナのポート3000にフォワードします。Next.jsのデフォルトポート3000が外部の8000ポートでアクセス可能になります。
 
 volumes:
+  mysql_data:
   node_modules:  # `node_modules` という名前付きボリュームを定義しています。これは、依存関係がOS固有の問題を引き起こさないように、コンテナ固有のものとして隔離されます。
