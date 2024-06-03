@@ -1,9 +1,5 @@
 # Docker,Next.js(14.2.3),Rails(7.1.3)の環境
-
-## 設定していること
-- eslint設定
-- GitHub ActionsでのCI
-## クローン後にすること
+## クローン後の環境構築
 1. フォルダー名の変更（プロジェクトに合わせた形にする）
 2. docker compose build --no-cache
 3. docker compose up
@@ -23,3 +19,12 @@ https://qiita.com/Masato338/items/f162394fbc37fc490dfb
 
 ## トラブルシューティング
 docker logs <<CONTAINER ID>>
+
+## Rails
+### テスト実行
+1. docker compose exec rails /bin/bash
+2. rspec
+### リント実行
+1. docker compose exec rails /bin/bash
+2. rubocop
+3. rubocop -Aで自動修正
