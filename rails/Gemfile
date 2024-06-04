@@ -37,6 +37,13 @@ gem "config"
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 gem "rack-cors"
 
+# 管理画面を簡単に作成する
+gem "rails_admin", "~> 3.1.2"
+gem "rails_admin-i18n"
+gem "sassc-rails"
+# Ruby3.4.0以降でcsvが標準ライブラリから削除されるため、gemで追加する
+gem "csv"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri windows]

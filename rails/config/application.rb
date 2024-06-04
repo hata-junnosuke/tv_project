@@ -42,5 +42,11 @@ module Myapp
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # rails_adminを使用するためのミドルウェアを設定
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Flash
+    config.middleware.use Rack::MethodOverride
+    config.middleware.use ActionDispatch::Session::CookieStore, { key: "_backend_session" }
   end
 end
