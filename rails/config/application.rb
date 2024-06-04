@@ -42,6 +42,8 @@ module Myapp
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    # 日本語対応
+    config.i18n.default_locale = :ja
 
     # rails_adminを使用するためのミドルウェアを設定
     config.middleware.use ActionDispatch::Cookies
