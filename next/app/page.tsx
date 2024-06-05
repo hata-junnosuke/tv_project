@@ -1,6 +1,8 @@
+'use client'
+
 import type { NextPage } from 'next'
 import useSWR from 'swr'
-import { fetcher } from '@/utils'
+import { fetcher } from './utils'
 
 const Index: NextPage = () => {
   const url = 'http://localhost:3000/api/v1/health_check'
