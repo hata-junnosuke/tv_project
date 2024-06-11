@@ -44,9 +44,19 @@ gem "sassc-rails"
 # Ruby3.4.0以降でcsvが標準ライブラリから削除されるため、gemで追加する
 gem "csv"
 
+# ユーザー認証を提供する
+gem "devise"
+# devise を日本語化する
+gem "devise-i18n"
+# ユーザーのトークン認証を提供する
+gem "devise_token_auth"
+gem "omniauth"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri windows]
+  # 開発環境でメール送信をテストする
+  gem "letter_opener_web"
   # pry コンソールを使えるようにする。
   gem "pry-byebug"
   gem "pry-doc"
