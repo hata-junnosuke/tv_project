@@ -1,4 +1,4 @@
-class Api::V1::Users::OmniauthCallbacksController < ApplicationController
+class Api::V1::Users::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCallbacksController
   skip_before_action :verify_authenticity_token, only: :google_oauth2
 
   def google_oauth2
