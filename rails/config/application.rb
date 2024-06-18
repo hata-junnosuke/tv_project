@@ -50,5 +50,12 @@ module Myapp
     config.middleware.use ActionDispatch::Flash
     config.middleware.use Rack::MethodOverride
     config.middleware.use ActionDispatch::Session::CookieStore, { key: "_backend_session" }
+
+    # Cookieで同じサイトを扱うための設定
+    config.action_dispatch.cookies_same_site_protection = :none
+    config.action_controller.forgery_protection_origin_check = false
+
+    # Don't use csrf tokens
+    config.action_controller.allow_forgery_protection = false
   end
 end

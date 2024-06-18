@@ -5,15 +5,18 @@ class User < ApplicationRecord
          :confirmable, :omniauthable, omniauth_providers: %i[google_oauth2]
   include DeviseTokenAuth::Concerns::User
 
-  validates :uid, uniqueness: { scope: :provider }
-
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
-      user.name = auth.info.name
-      user.password = Devise.friendly_token[0,20]
-      user.avatar = auth.info.image
-      user.skip_confirmation!
+  def self.find_or_create_by_oauth(auth)
+    transaction do
+      user = find_by(uid: auth.uid)
+      if user.nil?
+        newName = auth.info.name
+        if newName.length > 10
+          newName = newName[0..9]
+        end
+        user = User.new(uid: auth.uid, provider: auth.provider, name: newName)
+        user.save
+      end
+      user
     end
   end
 end
