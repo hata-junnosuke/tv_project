@@ -9,7 +9,6 @@ Rails.application.routes.draw do
       mount_devise_token_auth_for 'User', at: 'auth', controllers: {
         omniauth_callbacks: 'api/v1/auth/omniauth_callbacks',
       }
-      post 'auth/:provider/callback', to: 'auth/omniauth_callbacks#redirect_callbacks'
     end
   end
 end

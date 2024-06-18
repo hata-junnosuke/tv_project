@@ -40,6 +40,15 @@ const SignIn: NextPage = () => {
       })
   }
 
+  const handleGoogleAuth = (e) => {
+    e.preventDefault()
+    const form = document.createElement('form')
+    form.method = 'GET'
+    form.action = `http://localhost:3000/auth/google_oauth2`
+    document.body.appendChild(form)
+    form.submit()
+  }
+
   return (
     <Box
       sx={{
@@ -113,6 +122,7 @@ const SignIn: NextPage = () => {
         >
           Googleログイン
         </Button>
+        <button onClick={handleGoogleAuth}>Googleでログイン</button>
       </Container>
     </Box>
   )
