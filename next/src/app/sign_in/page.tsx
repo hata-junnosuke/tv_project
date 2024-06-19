@@ -44,7 +44,7 @@ const SignIn: NextPage = () => {
     e.preventDefault()
     const form = document.createElement('form')
     form.method = 'GET'
-    form.action = `http://localhost:3000/auth/google_oauth2`
+    form.action = `http://localhost:3000/api/v1/auth/google_oauth2`
     document.body.appendChild(form)
     form.submit()
   }
