@@ -14,7 +14,7 @@ class User < ApplicationRecord
           newName = newName[0..9]
         end
         user = User.new(uid: auth.uid, provider: auth.provider, name: newName)
-        user.save
+        user.save!
       end
       user
     end
