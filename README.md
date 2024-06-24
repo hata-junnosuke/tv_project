@@ -1,6 +1,6 @@
 # Docker,Next.js(14.2.3),Rails(7.1.3)の環境
 ## クローン後の環境構築
-1. フォルダー名の変更（プロジェクトに合わせた形にする）
+1. nextフォルダ,railsフォルダにenvファイルを追加
 2. `docker compose build --no-cache`
 3. `docker compose up`
 ### フロント設定
