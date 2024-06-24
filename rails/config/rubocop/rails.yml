@@ -50,7 +50,7 @@ Rails/SafeNavigation:
   ConvertTry: true
 
 Rails/SaveBang:
-  Enabled: true
+  Enabled: false
 
 Rails/ShortI18n:
   Enabled: false

@@ -317,7 +317,4 @@ Devise.setup do |config|
     provider_ignores_state: Rails.env.development?,
     failure_redirect_url: "/api/v1/auth/failure",
   }
-
-  # Googleログイン時にflashを使わないように設定
-  # config.navigational_formats = []
 end
