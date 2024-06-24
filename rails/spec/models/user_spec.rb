@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
-  # TODO Googleログインように修正が必要
+  # TODO: Googleログインように修正が必要
   context "factoryのデフォルト設定に従った場合" do
     let(:user) { create(:user) }
 

@@ -1,5 +1,5 @@
 FactoryBot.define do
-  # TODO Googleログインように修正が必要
+  # TODO: Googleログインように修正が必要
   factory :user do
     name { Faker::Name.name }
     sequence(:email) {|n| "#{n}_" + Faker::Internet.email }
