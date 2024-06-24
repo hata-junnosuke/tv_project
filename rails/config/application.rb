@@ -40,8 +40,6 @@ module Myapp
 
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
-    # Skip views, helpers and assets when generating a new resource.
-    config.api_only = true
     # 日本語対応
     config.i18n.default_locale = :ja
 
@@ -50,5 +48,9 @@ module Myapp
     config.middleware.use ActionDispatch::Flash
     config.middleware.use Rack::MethodOverride
     config.middleware.use ActionDispatch::Session::CookieStore, { key: "_backend_session" }
+
+    # Cookieで同じサイトを扱うための設定
+    config.action_dispatch.cookies_same_site_protection = :none
+    config.action_controller.forgery_protection_origin_check = false
   end
 end
