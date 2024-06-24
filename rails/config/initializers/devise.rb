@@ -312,10 +312,10 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
 
   # OmniAuth
-  config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], {
-    scope: 'email,profile',
+  config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"], {
+    scope: "email,profile",
     provider_ignores_state: Rails.env.development?,
-    failure_redirect_url: '/api/v1/auth/failure'
+    failure_redirect_url: "/api/v1/auth/failure",
   }
 
   # Googleログイン時にflashを使わないように設定

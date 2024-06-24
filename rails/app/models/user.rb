@@ -9,11 +9,10 @@ class User < ApplicationRecord
     transaction do
       user = find_by(uid: auth.uid)
       if user.nil?
-        newName = auth.info.name
-        if newName.length > 10
-          newName = newName[0..9]
-        end
-        user = User.new(uid: auth.uid, provider: auth.provider, name: newName)
+        name = auth.info.name
+        email = auth.info.email
+        image = auth.info.image
+        user = User.new(uid: auth.uid, provider: auth.provider, name:, email:, image:)
         user.save!
       end
       user

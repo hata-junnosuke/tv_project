@@ -40,11 +40,10 @@ const SignIn: NextPage = () => {
       })
   }
 
-  const handleGoogleAuth = (e) => {
-    e.preventDefault()
+  const handleGoogleAuth = () => {
     const form = document.createElement('form')
     form.method = 'GET'
-    form.action = `http://localhost:3000/api/v1/auth/google_oauth2`
+    form.action = process.env.NEXT_PUBLIC_API_BASE_URL + '/auth/google_oauth2'
     document.body.appendChild(form)
     form.submit()
   }
@@ -65,6 +64,7 @@ const SignIn: NextPage = () => {
             Sign in
           </Typography>
         </Box>
+        {/* Userのログインにパスワードによるものは不要だがadminの実装の参考のため実装 */}
         <Stack component="form" onSubmit={handleSubmit(onSubmit)} spacing={4}>
           <Controller
             name="email"
@@ -98,30 +98,6 @@ const SignIn: NextPage = () => {
             送信する
           </Button>
         </Stack>
-        <Button
-          variant="contained"
-          onClick={() => {
-            const url =
-              process.env.NEXT_PUBLIC_API_BASE_URL + '/auth/google_oauth2'
-            const headers = { 'Content-Type': 'application/json' }
-            axios({ method: 'POST', url: url, headers: headers })
-              .then((res: AxiosResponse) => {
-                localStorage.setItem(
-                  'access-token',
-                  res.headers['access-token'],
-                )
-                localStorage.setItem('client', res.headers['client'])
-                localStorage.setItem('uid', res.headers['uid'])
-                router.push('/')
-              })
-              .catch((e: AxiosError<{ error: string }>) => {
-                console.log(e.message)
-              })
-          }}
-          sx={{ fontWeight: 'bold', color: 'white' }}
-        >
-          Googleログイン
-        </Button>
         <button onClick={handleGoogleAuth}>Googleでログイン</button>
       </Container>
     </Box>

@@ -9,7 +9,7 @@ const SignOut: NextPage = () => {
   useEffect(() => {
     localStorage.clear()
     router.push('/sign_in')
-  }, [])
+  }, [router])
 
   return <></>
 }
