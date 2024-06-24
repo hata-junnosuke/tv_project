@@ -65,6 +65,12 @@ const SignIn: NextPage = () => {
           </Typography>
         </Box>
         {/* Userのログインにパスワードによるものは不要だがadminの実装の参考のため実装 */}
+        <Typography
+          component="h2"
+          sx={{ fontSize: 16, color: 'black', fontWeight: 'bold' }}
+        >
+          adminの参考のためフォームを実装（不要になれば削すること！）
+        </Typography>
         <Stack component="form" onSubmit={handleSubmit(onSubmit)} spacing={4}>
           <Controller
             name="email"
